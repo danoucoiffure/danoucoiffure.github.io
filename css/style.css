@@ -95,6 +95,7 @@ p {
 }
 
 .banner ul {
+  text-align: center;
     display: flex; /* Arranges list items horizontally */
     animation: slide 10s infinite linear; /* Animation for image sliding */
     white-space: nowrap; /* Prevents line breaks within the list */
