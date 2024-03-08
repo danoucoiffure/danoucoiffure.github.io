@@ -1,92 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>DanouCoiffure.com</title>
-        <link rel="stylesheet" href="css/style.css">
-        <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
-    </head>
-    <body style="background-color: yellow;">  
-        <header>
-            <a href="index.html"><img src="images/logo.png" alt="DanouCoiffure.com"></a>
-        </header>
-        <main>
-            <section class="banner">
-                <ul>
-                    <li><img src="images/Danou_Coiffure_Hair_Treament.jpeg" alt="DanouCoiffure.com"></li>
-                    <li><img src="images/Danou_Coiffure_Hair_Treament1.jpeg" alt="DanouCoiffure.com"></li>
-                    <li><img src="images/Danou_Coiffure_Hair_Treament2.jpeg" alt="DanouCoiffure.com"></li>
-                    <li><img src="images/Danou_Coiffure_Hair_Treament3.png" alt="DanouCoiffure.com"></li>
-                </ul>
-            </section>
-
-            <section class="products">
-                <h2>Products</h2>
-                <div class="product">
-                    <img src="images/product1.jpg" alt="DanouCoiffure.com">
-                    <h3>Crème Traitement naturel</h3>
-                    <p>Est un produit naturel pour nourrir et donner la brillance aux cheveux. Il empêche la casse, tout en améliorant la santé et la beauté des cheveux en les aidant à pousser.</p>
-                    <p>Mode d'emploi : Appliquer sur les cheveux, une bonne quantité des racines aux pointes, en utilisant un peigne pour distribuer le produit de façon uniforme. Ne pas rincer.</p>
-                    <button id="gpay-button"></button>
-                    <div id="paypal-button-container"></div>
-                </div>
-                <div class="product">
-                    <img src="images/product2.jpg" alt="DanouCoiffure.com">
-                    <h3>Pommade traitement naturel</h3>
-                    <p>Elle est conçue pour protéger, renforcer les cheveux secs, cassants ou abimés, elle nourrit et restaure les cheveux.</p>
-                    <p>Ingrédients : L'huile d'amande, l'huile d'olive, l'huile d'avocat, l'huile de coco, l'huile de cactus et l'huile romarin.</p>
-                    <button id="gpay-button"></button>
-                    <div id="paypal-button-container"></div>
-                </div>
-            </section>
-
-        </main>
-        <footer>
-            <p>Copyright &copy; 2024 DanouCoiffure.com</p>
-        </footer>
-        <script>
-          // Replace 'YOUR_CLIENT_ID' with your actual PayPal client ID
-          paypal.Buttons({
-            createOrder: function(data, actions) {
-              // Set up your order details here
-              return actions.order.create({
-                intent: 'CAPTURE',
-                applicationContext: {
-                  shippingPreference: 'NO_SHIPPING' // Optional: Set to 'NO_SHIPPING' if your product is digital
-                },
-                purchaseUnits: [{
-                  amount: {
-                    value: '19.99', // Update with your product price
-                    currency: 'USD'
-                  }
-                }]
-              });
-            },
-            onApprove: function(data, actions) {
-              // Handle successful payment here
-              console.log('Payment successful!', data);
-              alert('Thank you for your purchase!');
-            },
-            onError: function(err) {
-              // Handle payment errors here
-              console.error('Error:', err);
-              alert('Payment failed. Please try again.');
-            }
-          }).render('#paypal-button-container');
-        </script>
-
-        <button id="gpay-button"></button>
-
-    <script async src="https://pay.google.com/gp/button-api.js?client=ID&disable-callback=true"
-        onload="onGooglePayLoaded"></script>
-    <script>
-    function onGooglePayLoaded() {
-        const gpayButton = document.getElementById('gpay-button');
-        gpayButton.addEventListener('click', function () {
-        // Implement Google Pay functionality here
-        });
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DanouCoiffure.com</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="language-toggle">
+        <a href="#english">English</a> | <a href="#french">Français</a>
+    </div>
+    <h1>DanouCoiffure.com</h1>
+    <section class="banner">
+        <ul>
+            <li><img src="images/Danou_Coiffure_Hair_Treament.jpeg" alt="DanouCoiffure.com"></li>
+            <li><img src="images/Danou_Coiffure_Hair_Treament1.jpeg" alt="DanouCoiffure.com"></li>
+            <li><img src="images/Danou_Coiffure_Hair_Treament2.jpeg" alt="DanouCoiffure.com"></li>
+            <li><img src="images/Danou_Coiffure_Hair_Treament3.png" alt="DanouCoiffure.com"></li>
+        </ul>
+    </section>
+    <div id="english">
+        <h2>Natural Hair Treatment Cream:</h2>
+        <p>A natural product to nourish and add shine to your hair. It prevents breakage while improving the health and beauty of your hair by aiding in growth.</p>
+        <p>Directions for use: Apply a generous amount to the hair, from roots to ends, using a comb to distribute the product evenly. Do not rinse.</p>
+    </div>
+    <div id="french" style="display: none;">
+        <h2>Crème Traitement naturel :</h2>
+        <p>Est un produit naturel pour nourrir et donner de la brillance à vos cheveux. Il empêche la cassure tout en améliorant la santé et la beauté de vos cheveux en les aidant à pousser.</p>
+        <p>Mode d'emploi : Appliquer une bonne quantité sur les cheveux, des racines aux pointes, en utilisant un peigne pour distribuer le produit de manière uniforme. Ne pas rincer.</p>
+    </div>
+    <hr>
+    <h2>Danou Coiffure Pommade Traitement Naturel</h2>
+    <p>It is designed to protect, strengthen dry, brittle, or damaged hair, it nourishes and restores the hair.</p>
+    <p>Ingredients: Almond oil, olive oil, avocado oil, coconut oil, cactus oil, and rosemary oil.</p>
+    <p>Elle est conçue pour protéger, renforcer les cheveux secs, cassants ou abîmés, elle nourrit et restaure les cheveux.</p>
+    <p>Ingrédients : L'huile d'amande, l'huile d'olive, l'huile d'avocat, l'huile de coco, l'huile de cactus et l'huile de romarin.</p>
+    <section class="products">
+        <h2>Products</h2>
+        <div class="product">
+            <img src="images/Danou_Coiffure_Hair_Treament.jpeg" alt="DanouCoiffure.com">
+            <h3>Crème Traitement naturel</h3>
+            <p>Est un produit naturel pour nourrir et donner la brillance aux cheveux. Il empêche la casse, tout en améliorant la santé et la beauté des cheveux en les aidant à pousser.</p>
+            <p>Mode d'emploi : Appliquer sur les cheveux, une bonne quantité des racines aux pointes, en utilisant un peigne pour distribuer le produit de façon uniforme. Ne pas rincer.</p>
+            <button id="gpay-button"></button>
+            <div id="paypal-button-container"></div>
+        </div>
+        <div class="product">
+            <img src="images/Danou_Coiffure_Hair_Treament1.jpeg" alt="DanouCoiffure.com">
+            <h3>Pommade traitement naturel</h3>
+            <p>Elle est conçue pour protéger, renforcer les cheveux secs, cassants ou abimés, elle nourrit et restaure les cheveux.</p>
+            <p>Ingrédients : L'huile d'amande, l'huile d'olive, l'huile d'avocat, l'huile de coco, l'huile de cactus et l'huile romarin.</p>
+            <button id="gpay-button"></button>
+            <div id="paypal-button-container"></div>
+        </div>
+    </section>
+    <div class="payment-buttons">
+        <div id="container"></div>
+        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal Button">
+    </div>
+</div>
+</body>
+<footer>
+    <p>Copyright &copy; 2024 DanouCoiffure.com</p>
+</footer>
+<script>
+  // Replace 'YOUR_CLIENT_ID' with your actual PayPal client ID
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      // Set up your order details here
+      return actions.order.create({
+        intent: 'CAPTURE',
+        applicationContext: {
+          shippingPreference: 'NO_SHIPPING' // Optional: Set to 'NO_SHIPPING' if your product is digital
+        },
+        purchaseUnits: [{
+          amount: {
+            value: '19.99', // Update with your product price
+            currency: 'USD'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // Handle successful payment here
+      console.log('Payment successful!', data);
+      alert('Thank you for your purchase!');
+    },
+    onError: function(err) {
+      // Handle payment errors here
+      console.error('Error:', err);
+      alert('Payment failed. Please try again.');
     }
-    </script>
-    </body>
+  }).render('#paypal-button-container');
+</script>
+<script async src="https://pay.google.com/gp/button-api.js?client=ID&disable-callback=true" onload="onGooglePayLoaded"></script>
+<script>
+function onGooglePayLoaded() {
+const gpayButton = document.getElementById('gpay-button');
+gpayButton.addEventListener('click', function () {
+// Implement Google Pay functionality here
+});
+}
+</script>
+<script>
+    const container = document.getElementById('container');
+    const button = googlePayClient.createButton({
+        buttonColor: 'default',
+        buttonType: 'buy',
+        onClick: () => {},
+        allowedPaymentMethods: [] // use the same payment methods as for the loadPaymentData() API call
+    });
+
+    container.appendChild(button);
+</script>
+
+
 </html>
