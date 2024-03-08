@@ -1,10 +1,41 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffcc; /* Yellow background */
-
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffcc; /* Yellow background */
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif; /* Fancier font for headings */
+}
+p {
+  text-align: justify;
+}
+.product-image {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  width: 150px; /* Adjust image width as needed */
+  height: auto; /* Maintain image aspect ratio */
+  margin-right: 10px;
+}
+.language-toggle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.payment-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+.payment-buttons img {
+  width: 150px;
+  margin: 0 10px;
+}
   
   header {
     background-color: #f1f1f1; /* Light gray background for header */
@@ -40,12 +71,6 @@ body {
     margin-bottom: 15px;
     border-bottom: 1px solid #ddd; /* Light gray border for separation */
     padding-bottom: 10px;
-  }
-  
-  .product img {
-    width: 150px; /* Adjust image width as needed */
-    height: auto; /* Maintain image aspect ratio */
-    margin-right: 10px;
   }
   
   .product p {
