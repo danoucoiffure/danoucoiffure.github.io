@@ -4,23 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DanouCoiffure.com</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffcc; /* Yellow background */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif; /* Fancier font for headings */
+        }
+        p {
+            text-align: justify;
+        }
+        .banner {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .banner-content {
+            display: flex;
+            animation: scroll 10s linear infinite; /* Adjust the duration and timing function as needed */
+        }
+        .banner-item {
+            flex: 0 0 auto;
+            width: 100%;
+        }
+        .banner-item img {
+            width: 100%;
+        }
+        @keyframes scroll {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        .language-toggle {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .payment-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .payment-buttons img {
+            width: 150px;
+            margin: 0 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>DanouCoiffure.com</h1>
-    <section class="banner">
-        <ul>
-            <li><img src="images/Danou_Coiffure_Hair_Treament.jpeg" alt="DanouCoiffure.com"></li>
-            <li><img src="images/Danou_Coiffure_Hair_Treament1.jpeg" alt="DanouCoiffure.com"></li>
-            <li><img src="images/Danou_Coiffure_Hair_Treament2.jpeg" alt="DanouCoiffure.com"></li>
-            <li><img src="images/Danou_Coiffure_Hair_Treament3.png" alt="DanouCoiffure.com"></li>
-        </ul>
-    </section>
-    <div class="container">
+<div class="container">
     <div class="language-toggle">
         <a href="#english">English</a> | <a href="#french">Français</a>
     </div>
-
+    <h1>DanouCoiffure.com</h1>
+    <div class="banner">
+        <div class="banner-content">
+            <div class="banner-item"><img src="images/Danou_Coiffure_Hair_Treament.jpeg"   alt="DanouCoiffure.com"></div>
+            <div class="banner-item"><img src="images/Danou_Coiffure_Hair_Treament1.jpeg"  alt="DanouCoiffure.com"></div>
+            <div class="banner-item"><img src="himages/Danou_Coiffure_Hair_Treament2.jpeg" alt="DanouCoiffure.com"></div>
+            <div class="banner-item"><img src="images/Danou_Coiffure_Hair_Treament3.png"   alt="DanouCoiffure.com"></div>
+        </div>
+    </div>
     <div id="english">
         <h2>Natural Hair Treatment Cream:</h2>
         <p>A natural product to nourish and add shine to your hair. It prevents breakage while improving the health and beauty of your hair by aiding in growth.</p>
@@ -61,49 +115,6 @@
         <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal Button">
     </div>
 </div>
-</body>
-<footer>
-    <p>Copyright &copy; 2024 DanouCoiffure.com</p>
-</footer>
-<script>
-  // Replace 'YOUR_CLIENT_ID' with your actual PayPal client ID
-  paypal.Buttons({
-    createOrder: function(data, actions) {
-      // Set up your order details here
-      return actions.order.create({
-        intent: 'CAPTURE',
-        applicationContext: {
-          shippingPreference: 'NO_SHIPPING' // Optional: Set to 'NO_SHIPPING' if your product is digital
-        },
-        purchaseUnits: [{
-          amount: {
-            value: '19.99', // Update with your product price
-            currency: 'USD'
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      // Handle successful payment here
-      console.log('Payment successful!', data);
-      alert('Thank you for your purchase!');
-    },
-    onError: function(err) {
-      // Handle payment errors here
-      console.error('Error:', err);
-      alert('Payment failed. Please try again.');
-    }
-  }).render('#paypal-button-container');
-</script>
-<script async src="https://pay.google.com/gp/button-api.js?client=ID&disable-callback=true" onload="onGooglePayLoaded"></script>
-<script>
-function onGooglePayLoaded() {
-const gpayButton = document.getElementById('gpay-button');
-gpayButton.addEventListener('click', function () {
-// Implement Google Pay functionality here
-});
-}
-</script>
 <script>
     const container = document.getElementById('container');
     const button = googlePayClient.createButton({
@@ -115,6 +126,50 @@ gpayButton.addEventListener('click', function () {
 
     container.appendChild(button);
 </script>
+<script>
+    // Replace 'YOUR_CLIENT_ID' with your actual PayPal client ID
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        // Set up your order details here
+        return actions.order.create({
+          intent: 'CAPTURE',
+          applicationContext: {
+            shippingPreference: 'NO_SHIPPING' // Optional: Set to 'NO_SHIPPING' if your product is digital
+          },
+          purchaseUnits: [{
+            amount: {
+              value: '19.99', // Update with your product price
+              currency: 'USD'
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        // Handle successful payment here
+        console.log('Payment successful!', data);
+        alert('Thank you for your purchase!');
+      },
+      onError: function(err) {
+        // Handle payment errors here
+        console.error('Error:', err);
+        alert('Payment failed. Please try again.');
+      }
+    }).render('#paypal-button-container');
+  </script>
+  <script async src="https://pay.google.com/gp/button-api.js?client=ID&disable-callback=true" onload="onGooglePayLoaded"></script>
+  <script>
+  function onGooglePayLoaded() {
+  const gpayButton = document.getElementById('gpay-button');
+  gpayButton.addEventListener('click', function () {
+  // Implement Google Pay functionality here
+  });
+  }
+  </script>
+  </body>
+
+<footer>
+    <p>Copyright &copy; 2024 DanouCoiffure.com</p>
+</footer>
 
 
 </html>
